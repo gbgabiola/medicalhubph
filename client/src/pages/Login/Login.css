@@ -1,0 +1,81 @@
+
+.login__logo {
+    width: 400px!important;
+    height: auto!important;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.login__container {
+    position: relative;
+    width: 500px;
+    box-shadow: 0 4px 4px rgb(13 149 252 / 25%), 
+    1px -3px 3px rgb(13 149 252 / 13%)!important;
+    border-radius: 5px;
+    color: #333333!important;
+}
+
+@media (max-width: 576px) {
+    .login__logo {
+        width: 250px!important;
+    }
+    .login__container {
+        width: 350px !important;
+    }
+}
+.row > p {
+    margin-bottom: 0!important;
+}
+.accent__blue {
+    color: #0D95FC!important;
+}
+
+.btn-accent {
+    background-color: #0D95FC!important;
+    color: #fff!important;
+}
+
+.btn-accent:hover {
+    background-color: hsl(206, 98%, 40%)!important;
+}
+
+.login__divider {
+    position: relative;
+    margin: 0!important;
+}
+
+.login__divider > hr {
+    border: 1px solid #333333!important;
+}
+
+.login__divider > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 10px 20px 0px 20px;
+}
+
+.btn-google {
+    background-color: #4387f4!important;
+    color: #fff!important;
+}
+
+.btn-google:hover {
+    background-color: hsl(217, 89%, 55%)!important;
+}
+
+.btn-facebook {
+    background-color: #4267B2!important;
+    color: #fff!important;
+}
+
+.btn-facebook:hover {
+    background-color: hsl(220, 46%, 38%)!important;
+}
+
+.brand-logo {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 10px;
+}

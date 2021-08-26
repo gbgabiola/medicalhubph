@@ -1,0 +1,25 @@
+.register {
+    max-height: 100%;
+}
+.register__logo {
+    width: 300px!important;
+    height: auto!important;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.register__container {
+    position: relative;
+    width: 500px;
+    box-shadow: 0 4px 4px rgb(13 149 252 / 25%), 
+    1px -3px 3px rgb(13 149 252 / 13%)!important;
+    border-radius: 5px;
+    color: #333333!important;
+    padding-top: 24px!important;
+    padding-bottom: 24px!important;
+}
+
+@media (max-width: 546px) {
+    .register__container {
+        width: 350px!important;
+    }
+}
