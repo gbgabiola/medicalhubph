@@ -13,36 +13,60 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-app.use(cors({
-  origin: ['http://localhost:3000'],
-  methods: ['GET', 'POST'],
-  credentials: true 
-}));
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/register', (req,res)=>{
-  const username= req.body.username;
-  const password= req.body.password;
-  const firstname= req.body.patientFname;
-  const lastname=req.body.patientLname;
-  const email= req.body.email;
-  const phone=req.body.conNum;
+app.post('/register', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const firstname = req.body.patientFname;
+  const lastname = req.body.patientLname;
+  const email = req.body.email;
+  const phone = req.body.conNum;
 
-  db.query('INSERT INTO patientSignUp (patientFname, patientLname, email, conNum, username, password) VALUES (?, ?, ?, ?, ?, ?)', [firstname, lastname, email, phone, username, password],
-  (error, result)=>{
-    if(error){
-      console.log(error);
+  db.query(
+    'INSERT INTO patientSignUp (patientFname, patientLname, email, conNum, username, password) VALUES (?, ?, ?, ?, ?, ?)',
+    [firstname, lastname, email, phone, username, password],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send('Successfully registered!');
+      }
     }
-    else
-    {
-      res.send('Successfully registered!')
-    }
-  }
   );
 });
 
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    `SELECT * FROM patientSignUp WHERE username = ? AND password = ?`,
+    [username, password],
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({
+          message: 'Incorrent username/password combination, please try again!',
+        });
+      }
+    }
+  );
+});
 
 app.listen(port, () => {
   console.log(
