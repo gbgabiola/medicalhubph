@@ -13,9 +13,32 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true 
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.post('/register', (req,res)=>{
+  const username= req.body.username;
+  const password= req.body.password;
+
+  db.query('INSERT INTO patientSignUp (username, password) VALUES (?, ?)', [username, password],
+  (error, result)=>{
+    if(error){
+      console.log(error);
+    }
+    else
+    {
+      res.send('Successfully registered!')
+    }
+  }
+  );
+});
+
 
 app.listen(port, () => {
   console.log(
