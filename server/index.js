@@ -25,8 +25,12 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/register', (req,res)=>{
   const username= req.body.username;
   const password= req.body.password;
+  const firstname= req.body.patientFname;
+  const lastname=req.body.patientLname;
+  const email= req.body.email;
+  const phone=req.body.conNum;
 
-  db.query('INSERT INTO patientSignUp (username, password) VALUES (?, ?)', [username, password],
+  db.query('INSERT INTO patientSignUp (patientFname, patientLname, email, conNum, username, password) VALUES (?, ?, ?, ?, ?, ?)', [firstname, lastname, email, phone, username, password],
   (error, result)=>{
     if(error){
       console.log(error);

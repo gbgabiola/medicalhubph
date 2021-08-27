@@ -8,6 +8,10 @@ import Axios from 'axios';
 const Register = () => {
     const [usernameReg, setUsernameReg]=useState('');
     const [passwordReg, setPasswordReg]=useState('');
+    const [firstnameReg, setFirstnameReg]=useState('');
+    const [lastnameReg, setLastnameReg]=useState('');
+    const [emailReg, setEmailReg]=useState('');
+    const [phoneReg, setPhoneReg]=useState('');
    // const [username, setUsername]=useState('');
    // const [password, setPassword]=useSate('');
 
@@ -20,7 +24,11 @@ const Register = () => {
         Axios.post('http://localhost:3001/register', 
         {
             username: usernameReg,
-            password: passwordReg
+            password: passwordReg,
+            patientFname: firstnameReg,
+            patientLname:  lastnameReg,
+            email: emailReg,
+            conNum: phoneReg
         })
         .then(
             response=>{
@@ -40,19 +48,19 @@ const Register = () => {
                     <p className="text-center">Giving importance to your health and medical needs.</p>
                     <div className="col-md-12">
                         <label className="form-label">First Name</label>
-                        <input type="text" className="form-control"  />
+                        <input type="text" className="form-control" onChange={e=>{setFirstnameReg(e.target.value)}}/>
                     </div>
                     <div className="col-md-12">
                         <label className="form-label">Last Name</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control" onChange={e=>{setLastnameReg(e.target.value)}}/>
                     </div>
                     <div className="col-md-6">
                         <label className="form-label">Email Address</label>
-                        <input type="email" className="form-control" />
+                        <input type="email" className="form-control" onChange={e=>{setEmailReg(e.target.value)}}/>
                     </div>
                     <div className="col-md-6">
                         <label className="form-label">Phone Number</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control" onChange={e=>{setPhoneReg(e.target.value)}}/>
                     </div>
                     <div className="col-md-12">
                         <label className="form-label">Username</label>
